@@ -117,3 +117,159 @@ Developer & HealthTech Innovator
 
 ---
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 🗂️ Project Root Structure
+
+```
+GROUP-42/
+├── client/                    # Frontend (React)
+├── server/                    # Backend (Node.js + Express)
+├── docs/                      # Documentation & diagrams
+├── scripts/                   # Deployment, init scripts
+├── .env                       # Environment variables
+├── .gitignore                 # Git ignore file
+├── README.md                  # Project readme (you have it!)
+└── package.json               # Root level scripts
+```
+
+---
+
+## 📦 Detailed Structure
+
+### 1. `client/` (Frontend)
+
+```
+client/
+├── public/                  # Static files (index.html, icons)
+├── src/
+│   ├── assets/              # Images, icons
+│   ├── components/          # Reusable UI elements (buttons, cards)
+│   ├── features/            # Feature-specific folders (auth, booking)
+│   │   ├── auth/
+│   │   ├── booking/
+│   │   ├── dashboard/
+│   │   ├── pharmacy/
+│   │   ├── ehr/             # Medical history & health records
+│   │   ├── ai/              # AI Triage chatbot
+│   │   └── settings/
+│   ├── hooks/               # Custom React hooks
+│   ├── context/             # Global state (AuthContext, AppContext)
+│   ├── i18n/                # Multilingual files
+│   ├── services/            # API services (axios)
+│   ├── routes/              # Route configuration
+│   ├── App.js
+│   └── main.jsx
+├── tailwind.config.js
+└── package.json
+```
+
+---
+
+### 2. `server/` (Backend)
+
+```
+server/
+├── config/                   # DB, Cloud, SMS, 3rd party APIs
+│   ├── db.js
+│   └── smsGateway.js
+├── controllers/              # Route logic
+│   ├── authController.js
+│   ├── userController.js
+│   ├── bookingController.js
+│   ├── pharmacyController.js
+│   └── ehrController.js
+├── models/                   # Mongoose models
+│   ├── User.js
+│   ├── Patient.js
+│   ├── Doctor.js
+│   ├── Appointment.js
+│   ├── MedicalRecord.js
+│   └── MedicineStock.js
+├── middlewares/              # Auth, error, validation
+│   ├── authMiddleware.js
+│   ├── errorHandler.js
+│   └── rateLimiter.js
+├── routes/                   # Express routes
+│   ├── authRoutes.js
+│   ├── bookingRoutes.js
+│   ├── ehrRoutes.js
+│   └── pharmacyRoutes.js
+├── services/                 # SMS, AI APIs, OTP
+│   ├── smsService.js
+│   ├── otpService.js
+│   └── aiTriageService.js
+├── utils/                    # Helper functions
+│   └── generateToken.js
+├── validators/               # Joi/Zod schema validators
+│   └── userValidator.js
+├── app.js                    # Express setup
+├── server.js                 # Entry point
+└── package.json
+```
+
+---
+
+### 3. `docs/` (Documentation)
+
+```
+docs/
+├── architecture-diagram.png
+├── database-schema.pdf
+├── api-specification.md
+├── MVP-scope.md
+└── README-template.md
+```
+
+---
+
+### 4. `scripts/`
+
+```
+scripts/
+├── deploy.sh
+├── seedDatabase.js
+└── setupEnv.js
+```
+
+---
+
+## 🧱 Optional Folders (Future Additions)
+
+| Folder | Purpose |
+|--------|---------|
+| `admin-portal/` | Separate admin dashboard (React or Next.js) |
+| `mobile/` | React Native or Flutter app |
+| `infra/` | Docker, Terraform for cloud infra |
+| `test/` | Full-stack automated tests (Jest, Mocha, Cypress) |
+| `ml-models/` | Local AI logic or LangChain agents |
+
+---
+
+## ✅ Deployment & Hosting Suggestions
+
+| Service            | Use |
+|--------------------|-----|
+| **Render / Railway** | Backend |
+| **Firebase / Netlify** | Frontend |
+| **MongoDB Atlas**  | Cloud DB |
+| **Africa’s Talking** | SMS gateway |
+| **S3 / Cloudinary** | Image uploads (profile, ID) |
+
+---
+
