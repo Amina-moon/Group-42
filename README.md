@@ -185,43 +185,44 @@ client/
 
 ```
 server/
-├── config/                   # DB, Cloud, SMS, 3rd party APIs
-│   ├── db.js
-│   └── smsGateway.js
-├── controllers/              # Route logic
+├── config/
+│   ├── db.js                 # MySQL DB connection setup
+│   └── smsGateway.js         # Twilio or Africa's Talking config
+├── controllers/              # Handles route logic
 │   ├── authController.js
 │   ├── userController.js
 │   ├── bookingController.js
 │   ├── pharmacyController.js
 │   └── ehrController.js
-├── models/                   # Mongoose models
+├── models/                   # Sequelize or Raw SQL Models
+│   ├── index.js              # Model relationships
 │   ├── User.js
 │   ├── Patient.js
 │   ├── Doctor.js
 │   ├── Appointment.js
 │   ├── MedicalRecord.js
 │   └── MedicineStock.js
-├── middlewares/              # Auth, error, validation
-│   ├── authMiddleware.js
+├── middlewares/
+│   ├── authMiddleware.js     # JWT + Role-based Access
 │   ├── errorHandler.js
 │   └── rateLimiter.js
-├── routes/                   # Express routes
+├── routes/
 │   ├── authRoutes.js
 │   ├── bookingRoutes.js
 │   ├── ehrRoutes.js
 │   └── pharmacyRoutes.js
-├── services/                 # SMS, AI APIs, OTP
+├── services/
 │   ├── smsService.js
 │   ├── otpService.js
-│   └── aiTriageService.js
-├── utils/                    # Helper functions
-│   └── generateToken.js
-├── validators/               # Joi/Zod schema validators
-│   └── userValidator.js
-├── app.js                    # Express setup
-├── server.js                 # Entry point
+│   └── aiTriageService.js    # Optional AI integration
+├── utils/
+│   ├── generateToken.js
+│   └── hashPassword.js       # bcrypt for password hashing
+├── validators/
+│   └── userValidator.js      # Using Joi or Zod
+├── app.js                    # Express setup with middlewares
+├── server.js                 # Entry point (connects DB & runs server)
 └── package.json
-```
 
 ---
 
