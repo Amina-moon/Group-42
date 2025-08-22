@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import logo from "../assets/Images/logo1.png";
 import { FaUser, FaUserPlus } from "react-icons/fa";
-
+import LoginModal from "./Modals/LoginModal";
+import SignupModal from "./Modals/SignupModal"; 
 
 
 const Navbar = () => {
@@ -11,7 +12,7 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md py-4 px-6">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
+    
         <div className="flex items-center space-x-1">
           <img 
             src={logo} 
@@ -21,7 +22,6 @@ const Navbar = () => {
           <span className="text-2xl font-bold text-[#155DFC]">Wanaw Tena</span>
         </div>
 
-        {/* Nav Links */}
         <nav className="hidden md:flex space-x-8">
           <a href="/" className="text-gray-700 hover:text-[#155DFC] transition">Home</a>
           <a href="/about" className="text-gray-700 hover:text-[#155DFC] transition">AboutUs</a>
@@ -29,7 +29,6 @@ const Navbar = () => {
           <a href="contact" className="text-gray-700 hover:text-[#155DFC] transition">Contact</a>
         </nav>
 
-        {/* Buttons */}
         <div className="flex items-center space-x-4">
           <button 
             onClick={() => setIsLoginOpen(true)}
@@ -48,9 +47,22 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Modals */}
-     
-    </header>
+    <LoginModal 
+  isOpen={isLoginOpen} 
+  onClose={() => setIsLoginOpen(false)} 
+  onSwitchToSignup={() => {
+    setIsLoginOpen(false);
+    setIsSignupOpen(true);
+  }} 
+/>
+<SignupModal 
+  isOpen={isSignupOpen} 
+  onClose={() => setIsSignupOpen(false)} 
+  onSwitchToLogin={() => {
+    setIsSignupOpen(false);
+    setIsLoginOpen(true);
+  }} 
+/></header>
   );
 };
 
