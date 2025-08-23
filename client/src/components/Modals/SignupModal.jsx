@@ -25,7 +25,6 @@ const SignUpModal = ({ isOpen, onClose,onSwitchToLogin  }) => {
       [id]: value
     }));
     
-    // Clear error when user starts typing in the field
     if (errors[id]) {
       setErrors(prev => ({
         ...prev,
@@ -38,48 +37,40 @@ const SignUpModal = ({ isOpen, onClose,onSwitchToLogin  }) => {
     e.preventDefault();
     const newErrors = {};
 
-    // Check required fields
     if (!formData.faydaId) newErrors.faydaId = "Fayda ID is required";
     if (!formData.email) newErrors.email = "Email is required";
     if (!formData.phone) newErrors.phone = "Phone number is required";
     if (!formData.password) newErrors.password = "Password is required";
     if (!formData.confirmPassword) newErrors.confirmPassword = "Please confirm your password";
 
-    // If any required field is empty, show errors and stop further validation
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
-    // Validate Fayda ID
     if (formData.faydaId.length !== 16 || !/^\d+$/.test(formData.faydaId)) {
       newErrors.faydaId = "Fayda ID must be exactly 16 digits";
     }
 
-    // Validate Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
 
-    // Validate Phone Number
     const phoneRegex = /^(?:\+2519\d{8}|\+2517\d{8}|09\d{8}|07\d{8})$/;
     if (!phoneRegex.test(formData.phone)) {
       newErrors.phone = "Phone number must start with +2519, +2517, 09, or 07 followed by 8 digits";
     }
 
-    // Validate Password Match
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
     }
 
-    // Set errors if any
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
-    // Success
     alert("Sign up successful!");
     onClose();
   };
@@ -96,14 +87,12 @@ const SignUpModal = ({ isOpen, onClose,onSwitchToLogin  }) => {
                    flex flex-col md:flex-row relative max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Left Section - Branding */}
         <div className="bg-gray-50/50 md:w-2/5 flex flex-col items-center justify-center p-6 md:p-12 relative">
           <HomeIcon onClick={handleHomeClick} className="w-6 h-6 md:w-8 md:h-8 text-pink-500 absolute top-4 left-4 md:top-6 md:left-6 cursor-pointer" />
           <img src={logo} alt="Logo" className="w-24 h-24 md:w-40 md:h-40 mb-4 md:mb-6" />
           <h1 className="text-xl md:text-3xl font-bold text-gray-600 text-center">Wanaw Tena</h1>
         </div>
 
-        {/* Right Section - Form */}
         <div className="md:w-3/5 p-6 md:p-8">
           <XMarkIcon
             className="w-6 h-6 md:w-8 md:h-8 text-gray-500 absolute top-4 right-4 md:top-6 md:right-6 cursor-pointer"
